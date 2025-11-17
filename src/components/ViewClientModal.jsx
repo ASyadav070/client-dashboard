@@ -25,12 +25,16 @@ const ViewClientModal = ({ client, onClose }) => {
                 </div>
                 {/* Modal Body */}
                 <div className="p-6 space-y-3">
-                    <p><strong>Username:</strong> {client.username}</p>
+                    <p><strong>Username:</strong> {client.username || 'N/A'}</p>
                     <p><strong>Email:</strong> {client.email}</p>
                     <p><strong>Phone:</strong> {client.phone}</p>
-                    <p><strong>Website:</strong> <a href={`http://${client.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{client.website}</a></p>
-                    <p><strong>Company:</strong> {client.company.name}</p>
-                    <p><strong>Address:</strong> {`${client.address.street}, ${client.address.suite}, ${client.address.city}, ${client.address.zipcode}`}</p>
+                    {client.website && (
+                        <p><strong>Website:</strong> <a href={`http://${client.website}`} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">{client.website}</a></p>
+                    )}
+                    <p><strong>Company:</strong> {client.company?.name || 'N/A'}</p>
+                    {client.address && (
+                        <p><strong>Address:</strong> {`${client.address.street}, ${client.address.suite}, ${client.address.city}, ${client.address.zipcode}`}</p>
+                    )}
                 </div>
                 {/* Modal Footer */}
                 <div className="flex justify-end p-4 bg-gray-50 border-t border-gray-200 rounded-b-lg">

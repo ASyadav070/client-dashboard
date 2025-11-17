@@ -70,7 +70,14 @@ const AddEditClientModal = ({ isOpen, onClose, onSave, clientToEdit = null }) =>
             email: formData.email,
             phone: formData.phone,
             company: { name: formData.company },
-            username: formData.email.split('@')[0]
+            username: formData.email.split('@')[0],
+            website: `${formData.email.split('@')[0]}.com`,
+            address: {
+                street: 'N/A',
+                suite: 'N/A',
+                city: 'N/A',
+                zipcode: 'N/A'
+            }
         };
 
         try {
